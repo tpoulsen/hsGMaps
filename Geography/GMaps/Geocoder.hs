@@ -11,8 +11,7 @@ import Network.Wreq
 
 --TODO: Graceful error handling.
 
--- For requests with an API key. In use, function should be partially applied with API.
--- Empty "" is still valid.
+-- For requests with an API key. A key of "" is still valid.
 geocodeAddress :: APIKey -> T.Text -> IO GeocodeResponse
 geocodeAddress k s = do
     let p           = defaults & param "address" .~ [s] & param "key" .~ [k]

@@ -30,6 +30,7 @@ instance FromJSON AddressComponents where
                 o .: "short_name" <*>
                 o .: "types"
     parseJSON _ = mzero
+instance ToJSON AddressComponents where
     
 -----------------------------------------------------------
 data Location = Location 
@@ -45,6 +46,7 @@ instance FromJSON Location where
                 o .: "lat" <*>
                 o .: "lng"
     parseJSON _ = mzero 
+instance ToJSON Location where
 
 -----------------------------------------------------------
 data Viewport = Viewport
@@ -60,6 +62,7 @@ instance FromJSON Viewport where
                 o .: "northeast" <*>
                 o .: "southwest"
     parseJSON _ = mzero 
+instance ToJSON Viewport where
 
 -----------------------------------------------------------
 data Geometry = Geometry
@@ -77,6 +80,7 @@ instance FromJSON Geometry where
                 o .: "location_type" <*>
                 o .: "viewport"
     parseJSON _ = mzero
+instance ToJSON Geometry where
 
 -----------------------------------------------------------
 data GeocodeResults = GeocodeResults
@@ -96,6 +100,7 @@ instance FromJSON GeocodeResults where
                 o .: "geometry"           <*>
                 o .: "types"
     parseJSON _ = mzero
+instance ToJSON GeocodeResults where
 
 -----------------------------------------------------------
 data GeocodeResponse = GeocodeResponse
@@ -111,3 +116,4 @@ instance FromJSON GeocodeResponse where
                 o .: "results" <*>
                 o .: "status"
     parseJSON _  = mzero
+instance ToJSON GeocodeResponse where
