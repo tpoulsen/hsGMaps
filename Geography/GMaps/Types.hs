@@ -2,7 +2,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TemplateHaskell   #-}
 
-module Geography.GoogleMapsAPI where
+module Geography.GMaps.Types where
 
 import Control.Applicative ((<$>), (<*>))
 import Control.Monad       (mzero)
