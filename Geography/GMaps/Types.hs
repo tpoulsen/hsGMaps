@@ -13,6 +13,7 @@ import GHC.Generics
 import qualified Data.ByteString.Lazy.Internal as BS
 import qualified Data.Text as T
 
+type APIKey = T.Text
 
 data AddressComponents = AddressComponents
     {  _longName  :: T.Text
