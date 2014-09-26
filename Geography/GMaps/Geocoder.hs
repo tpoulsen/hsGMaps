@@ -25,6 +25,13 @@ reverseGeocode k s = do
     let q      = "https://maps.googleapis.com/maps/api/geocode/json?"
     fmap (^. responseBody) . asJSON =<< getWith p q
 
+-- Convenience for applications without an API key.
+geocodeAddress_ :: T.Text -> IO GeocodeResponse
+geocodeAddress_ = geocodeAddress ""
+
+reverseGeocode_ :: Location -> IO GeocodeResponse
+reverseGeocode_ = reverseGeocode ""
+
 -- Tries to get Lat/Lng for response, if there aren't results, gets the status message.
 getLatLng :: GeocodeResponse -> Either T.Text [Location]
 getLatLng r = 

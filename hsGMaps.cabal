@@ -17,7 +17,9 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     Geography.GMaps.Geocoder, Geography.GMaps.Types
+  exposed-modules:       Geography.GMaps.Geocoder
+                       , Geography.GMaps.Types
+                       , Geography.Geography
   -- other-modules:       
   other-extensions:    OverloadedStrings, DeriveGeneric, TemplateHaskell
   build-depends:         base       >=4.6  && <4.7
