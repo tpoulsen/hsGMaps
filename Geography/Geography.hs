@@ -2,10 +2,14 @@
 
 module Geography.Geography 
     ( geoDistance
+    , geoDistanceGeocoder
     ) where
 
+import Geography.GMaps.Geocoder
 import Geography.GMaps.Types
-import Control.Lens ((^.))
+import Control.Applicative   (liftA, liftA2)
+import Control.Lens          ((^.))
+import qualified Data.Text as T (Text)
 
 locationRadians :: Location -> (Double, Double)
 locationRadians l = 
@@ -24,3 +28,9 @@ geoDistance p1 p2 =
         halfDistSquare = sin deltaLat/2 * sin deltaLat/2 + cos lat1r * cos lat2r  * sin deltaLng/2 * sin deltaLng/2
         angularDist    = 2 * atan2 (sqrt halfDistSquare) (sqrt (1-halfDistSquare))
     in earthRadius * angularDist
+
+geoDistanceGeocoder :: GeocodeResponse -> GeocodeResponse -> Either T.Text Double
+geoDistanceGeocoder p1 p2 =
+    let p1' = liftA head $ getLatLng p1
+        p2' = liftA head $ getLatLng p2
+    in liftA2 geoDistance p1' p2'
